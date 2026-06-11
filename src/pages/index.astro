@@ -1,0 +1,17 @@
+---
+import { Font } from 'astro:assets';
+
+export const prerender = true;
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>workerd exit code repro</title>
+    <!-- --font-open-sans is not registered in astro.config.mjs -> FontFamilyNotFound -->
+    <Font cssVariable={'--font-open-sans'} preload />
+  </head>
+  <body>
+    <h1>If this page is in dist/ while the build logged an uncaught exception, the bug reproduces.</h1>
+  </body>
+</html>

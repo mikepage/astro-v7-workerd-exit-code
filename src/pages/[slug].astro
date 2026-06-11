@@ -1,0 +1,23 @@
+---
+import { Font } from 'astro:assets';
+
+export const prerender = true;
+
+export function getStaticPaths() {
+  return Array.from({ length: 20 }, (_, i) => ({ params: { slug: `page-${i}` } }));
+}
+
+const { slug } = Astro.params;
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>{slug}</title>
+    <!-- --font-open-sans is not registered in astro.config.mjs -> FontFamilyNotFound -->
+    <Font cssVariable={'--font-open-sans'} preload />
+  </head>
+  <body>
+    <h1>{slug}</h1>
+  </body>
+</html>
