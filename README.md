@@ -3,6 +3,13 @@
 Minimal reproduction: a fatal error inside the Cloudflare adapter's workerd
 prerender runtime does **not** fail `astro build`.
 
+> **Status: fixed in `astro@7.0.0-beta.3`** (with the same
+> `@astrojs/cloudflare@14.0.0-alpha.1`). The build now exits with code **1**,
+> the `FontFamilyNotFound` error is surfaced during prerendering (also on
+> macOS, where it was previously swallowed), and no truncated HTML is emitted.
+> Reported in [withastro/astro#17047](https://github.com/withastro/astro/issues/17047).
+> The sections below describe the original behavior on `7.0.0-alpha.2`.
+
 ## Setup
 
 - `astro@7.0.0-alpha.2`
@@ -53,4 +60,3 @@ itself, not the process exit code or the log stream.
 A page that throws during prerendering should fail the build (non-zero exit
 code), or at minimum the truncated page should not be emitted as if
 successful.
-
