@@ -54,8 +54,3 @@ A page that throws during prerendering should fail the build (non-zero exit
 code), or at minimum the truncated page should not be emitted as if
 successful.
 
-## Expected
-
-A page that throws during prerendering should fail the build (non-zero exit
-code), or at minimum the truncated page should not be emitted as if
-successful.
